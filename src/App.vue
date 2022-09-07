@@ -1,19 +1,17 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { ref } from 'vue';
+import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 import FlipListDemo from './demos/transition/FlipListDemo.vue'
 
-const tt = ref<{consoleCount: () => void;} | undefined>();
+const tt = ref<{ consoleCount: () => void } | undefined>()
 
 function handle(count: number) {
-  console.log('count: ', count)
+  console.log('count: ', count, 'aa')
+
   tt.value?.consoleCount()
 }
-
-
-
 </script>
 
 <template>
@@ -21,22 +19,20 @@ function handle(count: number) {
     <template #hd>header666</template>
   </HelloWorld> -->
 
-  <RouterView v-slot="{ Component, route }">
+  <RouterView v-slot="{ Component }">
     <template v-if="Component">
-    <Transition name="fade" mode="out-in">
-      <KeepAlive>
-        <Suspense>
-          <!-- 主要内容 -->
-          <component :is="Component"></component>
+      <Transition name="fade" mode="out-in">
+        <KeepAlive>
+          <Suspense>
+            <!-- 主要内容 -->
+            <component :is="Component"></component>
 
-          <!-- 加载中状态 -->
-          <template #fallback>
-            正在加载...
-          </template>
-        </Suspense>
-      </KeepAlive>
-    </Transition>
-  </template>
+            <!-- 加载中状态 -->
+            <template #fallback> 正在加载... </template>
+          </Suspense>
+        </KeepAlive>
+      </Transition>
+    </template>
   </RouterView>
 </template>
 

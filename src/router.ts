@@ -1,28 +1,24 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router'
 
-export const routerHistory = createWebHistory();
+export const routerHistory = createWebHistory()
 export const router = createRouter({
   history: routerHistory,
   strict: true,
   routes: [
-    { path: "/home", redirect: "/" },
+    { path: '/home', redirect: '/' },
     {
-      path: "/",
-      component: () =>
-        import(/* webpackChunkName: "home" */ "./views/Home/index.vue"),
-      props: { default: (to: any) => ({ waited: to.meta.waitedFor }) },
+      path: '/',
+      component: () => import(/* webpackChunkName: "home" */ './views/Home/index-page.vue'),
+      props: { default: (to: any) => ({ waited: to.meta.waitedFor }) }
     },
     {
-      path: "/test",
-      component: () =>
-        import(/* webpackChunkName: "home" */ "./views/Home/test.vue"),
+      path: '/test',
+      component: () => import(/* webpackChunkName: "home" */ './views/Home/test-page.vue')
     },
     {
-      path: "/:patchMatch(.*)*",
-      name: "NotFound",
-      component: import(
-        /* webpackChunkName: "home" */ "./views/ErrorPages/NotFound.vue"
-      ),
-    },
-  ],
-});
+      path: '/:patchMatch(.*)*',
+      name: 'NotFound',
+      component: import(/* webpackChunkName: "home" */ './views/ErrorPages/NotFound.vue')
+    }
+  ]
+})

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue'
-  import { useRouter, useRoute } from 'vue-router'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 
-  onMounted(() => {
-    console.log(useRoute().params.patchMatch)
-  });
+onMounted(() => {
+  console.log(useRoute().params.patchMatch)
+})
 </script>
 
 <template>
