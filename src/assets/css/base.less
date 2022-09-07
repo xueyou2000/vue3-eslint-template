@@ -1,0 +1,30 @@
+@import './variabless.less';
+
+a {
+  color: @primary-color;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: lighten(@primary-color, 1%);
+}
+
+a:active {
+  color: darken(@primary-color, 1%);
+}
+
+a:active,
+a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+
+a:focus {
+  text-decoration: none;
+  outline: 0;
+}

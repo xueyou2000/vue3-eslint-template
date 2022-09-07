@@ -3,20 +3,17 @@ import { ref, defineExpose } from 'vue'
 
 defineProps<{ msg: string }>()
 const emits = defineEmits<{
-  (event: 'updateCase', count: number): void;
+  (event: 'updateCase', count: number): void
   (event: 'test'): void
 }>()
 
 const count = ref(0)
 
-const attribute = ref('id');
-
+const attribute = ref('id')
 
 defineExpose({
-  'consoleCount': () => console.log(count.value)
-});
-
-
+  consoleCount: () => console.log(count.value)
+})
 </script>
 
 <template>
@@ -34,9 +31,7 @@ defineExpose({
   <p>See <code>README.md</code> for more information.</p>
 
   <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
+    <a href="https://vitejs.dev/guide/features.html" target="_blank"> Vite Docs </a>
     |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>

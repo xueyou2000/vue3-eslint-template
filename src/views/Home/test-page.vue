@@ -8,6 +8,7 @@ function sleep() {
     }, 3000)
   })
 }
+
 const router = useRouter()
 function toHome() {
   router.push('/home')

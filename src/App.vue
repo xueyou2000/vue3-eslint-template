@@ -1,17 +1,5 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
-import FlipListDemo from './demos/transition/FlipListDemo.vue'
-
-const tt = ref<{ consoleCount: () => void } | undefined>()
-
-function handle(count: number) {
-  console.log('count: ', count, 'aa')
-
-  tt.value?.consoleCount()
-}
+import PageLoading from '@/components/loading/PageLoading.vue'
 </script>
 
 <template>
@@ -23,12 +11,14 @@ function handle(count: number) {
     <template v-if="Component">
       <Transition name="fade" mode="out-in">
         <KeepAlive>
-          <Suspense>
+          <Suspense :timeout="400">
             <!-- 主要内容 -->
             <component :is="Component"></component>
 
             <!-- 加载中状态 -->
-            <template #fallback> 正在加载... </template>
+            <template #fallback>
+              <PageLoading />
+            </template>
           </Suspense>
         </KeepAlive>
       </Transition>
@@ -38,12 +28,9 @@ function handle(count: number) {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 .fade-enter-active,
 .fade-leave-active {

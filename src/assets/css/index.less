@@ -1,0 +1,64 @@
+@import './base.less';
+
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早起浏览器*/
+  -moz-user-select: none;
+  /*火狐浏览器*/
+  -ms-user-select: none;
+  /*IE浏览器*/
+  user-select: none;
+  /*用户是否能够选中文本*/
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  margin: 0;
+  font-feature-settings: 'liga', 'kern';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  -webkit-overflow-scrolling: auto;
+  font-family: 'PingFang SC', 'Microsoft Yahei', Colfax, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+  // touch-action: none;
+}
+
+img {
+  /* 禁止长按图片保存 */
+  pointer-events: none;
+}
+
+.fix {
+
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+    box-sizing: border-box;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
