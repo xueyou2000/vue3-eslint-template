@@ -23,10 +23,12 @@ specifiers:
   pinia: ^2.1.6
   postcss-px-to-viewport-8-plugin: ^1.2.2
   prettier: ^3.0.2
+  rollup: ^3.28.0
   rollup-plugin-bundle-analyzer: ^1.6.6
   terser: ^5.19.2
   typescript: '*'
   vite: ^4.4.9
+  vite-plugin-cdn-import: ^0.3.5
   vite-plugin-eslint: ^1.8.1
   vue: ^3.3.4
   vue-router: ^4.2.4
@@ -59,10 +61,12 @@ devDependencies:
   less: 4.2.0
   postcss-px-to-viewport-8-plugin: 1.2.2
   prettier: 3.0.2
-  rollup-plugin-bundle-analyzer: 1.6.6
+  rollup: 3.28.0
+  rollup-plugin-bundle-analyzer: 1.6.6_rollup@3.28.0
   terser: 5.19.2
   typescript: 5.1.6
   vite: 4.4.9_quhmvb5pkibv5rnaep4q5wvepq
+  vite-plugin-cdn-import: 0.3.5_rollup@3.28.0
   vite-plugin-eslint: 1.8.1_eslint@8.47.0+vite@4.4.9
   vue-tsc: 1.8.8_typescript@5.1.6
 
@@ -3195,6 +3199,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /is-reference/1.2.1:
+    resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
+    dependencies:
+      '@types/estree': 1.0.1
+    dev: true
+
   /is-regex/1.1.4:
     resolution: {integrity: sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==}
     engines: {node: '>= 0.4'}
@@ -3363,6 +3373,12 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: true
+
+  /magic-string/0.25.9:
+    resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
+    dependencies:
+      sourcemap-codec: 1.4.8
     dev: true
 
   /magic-string/0.30.2:
@@ -3817,7 +3833,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-bundle-analyzer/1.6.6:
+  /rollup-plugin-bundle-analyzer/1.6.6_rollup@3.28.0:
     resolution: {integrity: sha512-H4FawRu0fkM+FC1GievBoQ1nN23AQHkffIgdZzMFCN3LOdpFzSH+Djwz14lrlT7ZzO5356aaip+McQ7kQtYZ6Q==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -3831,12 +3847,25 @@ packages:
       gzip-size: 6.0.0
       lodash: 4.17.21
       opener: 1.5.2
+      rollup: 3.28.0
       sirv: 1.0.19
       terser: 5.19.2
       ws: 7.5.9
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+    dev: true
+
+  /rollup-plugin-external-globals/0.6.1_rollup@3.28.0:
+    resolution: {integrity: sha512-mlp3KNa5sE4Sp9UUR2rjBrxjG79OyZAh/QC18RHIjM+iYkbBwNXSo8DHRMZWtzJTrH8GxQ+SJvCTN3i14uMXIA==}
+    peerDependencies:
+      rollup: ^2.25.0
+    dependencies:
+      '@rollup/pluginutils': 4.2.1
+      estree-walker: 2.0.2
+      is-reference: 1.2.1
+      magic-string: 0.25.9
+      rollup: 3.28.0
     dev: true
 
   /rollup/2.79.1:
@@ -3967,6 +3996,11 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /sourcemap-codec/1.4.8:
+    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: true
 
   /string.prototype.trim/1.2.7:
@@ -4228,6 +4262,14 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: true
+
+  /vite-plugin-cdn-import/0.3.5_rollup@3.28.0:
+    resolution: {integrity: sha512-e1raoalfBiIhv+hnMeSp1UNjloDDBhHpeFxkwRRdPBmTdDRqdEEn8owUmT5u8UBSVCs4xN3n/od4a91vXEhXPQ==}
+    dependencies:
+      rollup-plugin-external-globals: 0.6.1_rollup@3.28.0
+    transitivePeerDependencies:
+      - rollup
     dev: true
 
   /vite-plugin-eslint/1.8.1_eslint@8.47.0+vite@4.4.9:
