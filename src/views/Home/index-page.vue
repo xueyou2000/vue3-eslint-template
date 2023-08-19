@@ -13,6 +13,23 @@ onMounted(() => {
 function toTest() {
   router.push('/test')
 }
+
+async function getData() {
+  try {
+    const response = await fetch('/api/auth/users/33?token=123', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: 'hello' })
+    })
+    console.log('>>> response.json()', response)
+    const data = await response.json()
+    console.log('>>> res data', data)
+  } catch (error) {
+    console.log('>>> error', error)
+  }
+}
 </script>
 
 <template>
@@ -20,6 +37,8 @@ function toTest() {
     <h1>Home page</h1>
     <div class="btn-wrap">
       <ShadowButton @click="toTest">Get a Demo</ShadowButton>
+      <br />
+      <ShadowButton @click="getData">获取mock数据</ShadowButton>
     </div>
 
     <!-- <p v-if="waited != null">I waited for {{ waited }}</p> -->

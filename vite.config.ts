@@ -1,10 +1,14 @@
+import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
+import bodyParser from 'body-parser'
 import { resolve } from 'path'
 import bundleAnalyzer from 'rollup-plugin-bundle-analyzer'
 import { defineConfig, loadEnv } from 'vite'
+import { autoComplete, Plugin as importToCDN } from 'vite-plugin-cdn-import'
+import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 import eslintPlugin from 'vite-plugin-eslint'
-import { Plugin as importToCDN, autoComplete } from 'vite-plugin-cdn-import'
-import legacy from '@vitejs/plugin-legacy'
+import mockServer from 'vite-plugin-mock-server'
+import progress from 'vite-plugin-progress'
 
 function getProductionPlugins() {
   return [
@@ -33,6 +37,9 @@ function getProductionPlugins() {
         }
       ]
     }),
+    progress(),
+    // @see https://github.com/sanyuan0704/vite-plugin-chunk-split/blob/HEAD/README-CN.md
+    chunkSplitPlugin(),
     ...(process.env.ANALYZER == '1' ? [bundleAnalyzer({})] : [])
   ]
 }
@@ -45,7 +52,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     server: {
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      open: true
     },
     resolve: {
       alias: {
@@ -61,6 +69,16 @@ export default defineConfig(({ mode }) => {
       // 添加下面这块
       eslintPlugin({
         include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue']
+      }),
+      mockServer({
+        logLevel: 'info',
+        mockRootDir: './mock',
+        middlewares: [
+          bodyParser.urlencoded({ extended: false }),
+          bodyParser.json(),
+          bodyParser.text(),
+          bodyParser.raw()
+        ]
       }),
       ...(isPro ? getProductionPlugins() : [])
     ]
