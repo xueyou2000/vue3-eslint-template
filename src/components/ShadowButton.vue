@@ -12,7 +12,7 @@ defineEmits<{
       <span class="button-bg gradient bg-3" aria-hidden="true"></span>
       <a class="button-actual" role="button" tabindex="0">
         <span class="button_content">
-          <slot />
+          <slot></slot>
         </span>
       </a>
     </div>

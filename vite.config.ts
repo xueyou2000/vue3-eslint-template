@@ -4,7 +4,6 @@ import bundleAnalyzer from 'rollup-plugin-bundle-analyzer'
 import { defineConfig, loadEnv } from 'vite'
 import eslintPlugin from 'vite-plugin-eslint'
 import { Plugin as importToCDN, autoComplete } from 'vite-plugin-cdn-import'
-// @ts-ignore
 import legacy from '@vitejs/plugin-legacy'
 
 function getProductionPlugins() {
@@ -42,6 +41,7 @@ function getProductionPlugins() {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const isPro = mode === 'production'
+  console.log('>>> NODE_ENV', env.NODE_ENV)
 
   return {
     server: {
@@ -53,6 +53,9 @@ export default defineConfig(({ mode }) => {
       }
     },
     base: '/',
+    esbuild: {
+      drop: isPro ? ['console', 'debugger'] : []
+    },
     plugins: [
       vue(),
       // 添加下面这块
