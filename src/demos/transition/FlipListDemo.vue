@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import _ from 'lodash';
+import _ from 'lodash'
 
-const items = ref([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-const nextNum = ref(10);
-
+const items = ref([1, 2, 3, 4, 5, 6, 7, 8, 9])
+const nextNum = ref(10)
 
 function randomIndex() {
   return Math.floor(Math.random() * items.value.length)
@@ -18,7 +17,6 @@ function remove() {
 function shuffle() {
   items.value = _.shuffle(items.value)
 }
-
 </script>
 
 <template>
@@ -35,24 +33,24 @@ function shuffle() {
 </template>
 
 <style>
-  .list-complete-item {
-    transition: all 0.8s ease;
-    display: inline-block;
-    margin-right: 10px;
-  }
+.list-complete-item {
+  transition: all 0.8s ease;
+  display: inline-block;
+  margin-right: 10px;
+}
 
-  /* .list-complete-enter-active,
+/* .list-complete-enter-active,
   .list-complete-leave-active {
     transition: all 1s ease;
   } */
 
-  .list-complete-enter-from,
-  .list-complete-leave-to {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+.list-complete-enter-from,
+.list-complete-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
 
-  .list-complete-leave-active {
-    position: absolute;
-  }
+.list-complete-leave-active {
+  position: absolute;
+}
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emits = defineEmits<{
+defineEmits<{
   (event: 'click'): void
 }>()
 </script>

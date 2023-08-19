@@ -3,10 +3,6 @@ import PageLoading from '@/components/loading/PageLoading.vue'
 </script>
 
 <template>
-  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" @update-case="handle" ref="tt">
-    <template #hd>header666</template>
-  </HelloWorld> -->
-
   <RouterView v-slot="{ Component }">
     <template v-if="Component">
       <Transition name="fade" mode="out-in">

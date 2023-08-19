@@ -17,7 +17,7 @@ function toHome() {
 
 <template>
   <div>
-    <p>测试页面</p>
+    <p>测试页面, 此页面 setup为异步, 模拟3秒懒加载</p>
     <button @click="toHome">回首页</button>
   </div>
 </template>

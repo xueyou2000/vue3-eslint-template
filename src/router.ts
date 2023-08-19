@@ -13,7 +13,7 @@ export const router = createRouter({
     },
     {
       path: '/test',
-      component: () => import(/* webpackChunkName: "home" */ './views/Home/test-page.vue')
+      component: () => import(/* webpackChunkName: "test" */ './views/Home/test-page.vue')
     },
     {
       path: '/:patchMatch(.*)*',

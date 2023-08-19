@@ -13,18 +13,13 @@ onMounted(() => {
 function toTest() {
   router.push('/test')
 }
-
-function handleClick() {
-  console.log('click')
-}
 </script>
 
 <template>
   <div>
     <h1>Home page</h1>
-    <button @click="toTest">去测试页面</button>
     <div class="btn-wrap">
-      <ShadowButton @click="handleClick">Get a Demo</ShadowButton>
+      <ShadowButton @click="toTest">Get a Demo</ShadowButton>
     </div>
 
     <!-- <p v-if="waited != null">I waited for {{ waited }}</p> -->
