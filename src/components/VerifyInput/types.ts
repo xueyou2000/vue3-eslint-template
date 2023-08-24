@@ -16,7 +16,7 @@ export interface VerifyInputItemEvents {
   /** 内容改变 */
   (event: 'update:modelValue', value: ValueWitchEmpty): void
   /** 内容删除 */
-  (event: 'clear'): void
+  (event: 'clear', focusChange?: boolean): void
   /** 黏贴事件 */
   (event: 'onPaste', value: string): void
   /** 焦点事件 */
@@ -26,6 +26,8 @@ export interface VerifyInputItemEvents {
 export interface VerifyInputProps extends VerifyInputCommon {
   /** 输入框数量 */
   length?: number
+  /** 是否默认焦点 */
+  defaultFocus?: boolean
 }
 
 export interface VerifyInputEvents {

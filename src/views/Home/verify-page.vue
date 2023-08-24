@@ -1,6 +1,6 @@
 <template>
   <div :style="{ backgroundColor: '#eff2f5', padding: '10px' }">
-    <VerifyInput v-model="value" @onComplete="onComplete" />
+    <VerifyInput v-model="value" @onComplete="onComplete" type="text" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import { VerifyInput } from '@/components/VerifyInput'
 
 const value = ref()
 
-function onComplete(val: string) {
+function onComplete(val?: string | null) {
   console.log('>>> onComplete 输入完毕', val)
 }
 </script>

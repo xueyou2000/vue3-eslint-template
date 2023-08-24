@@ -2,10 +2,11 @@
   <li class="verify-input-item" :class="{ focused }">
     <div
       class="mock-input"
+      tabindex="1"
       contenteditable
       :type="type"
       ref="inputRef"
-      v-text="modelValue"
+      v-text="showContext"
       @input="onInput"
       @paste="onPaste"
       @focus="$emit('focus', $event)"
@@ -16,25 +17,29 @@
 
 <script setup lang="ts">
 import { useFocus } from '@vueuse/core'
-import { ref, watch } from 'vue'
-import { VerifyInputItemEvents, VerifyInputItemProps } from './types'
+import { computed, nextTick, ref, watch, watchEffect } from 'vue'
+import { ValueWitchEmpty, VerifyInputItemEvents, VerifyInputItemProps } from './types'
 
 const emits = defineEmits<VerifyInputItemEvents>()
 const props = withDefaults(defineProps<VerifyInputItemProps>(), {
   type: 'text'
 })
+const showContext = computed(() => getContext(props.modelValue))
 
-const inputRef = ref<HTMLInputElement>()
+function getContext(str: ValueWitchEmpty) {
+  if (!str) return ''
+  return props.type == 'text' ? str : '*'
+}
+
+const inputRef = ref<HTMLDivElement>()
 const { focused } = useFocus(inputRef)
-// onKeyPressed(['Backspace'], () => {
-//   console.log('>>> 按下退格键')
-// })
 
 function onInput(event: any) {
   const content = (event.target?.innerText || '').trim()
   if (content) {
-    event.target.innerText = ''
-    emits('update:modelValue', content)
+    const lastChar = content.slice(-1)
+    emits('update:modelValue', lastChar)
+    event.target.innerText = getContext(lastChar)
   } else {
     emits('clear')
   }
@@ -42,7 +47,7 @@ function onInput(event: any) {
 
 function KeyboardEvent(event: KeyboardEvent) {
   if (event.key === 'Backspace') {
-    emits('clear')
+    emits('clear', !props.modelValue)
   }
 }
 
@@ -58,18 +63,50 @@ function onPaste(event: ClipboardEvent) {
   }
 }
 
-// watchEffect(() => {
-//   if (props.focused) {
-//     focused.value = props.focused
-//   }
-// })
+function syncContent() {
+  const ele = inputRef.value
+  if (ele) {
+    ele.innerText = props.modelValue ? showContext.value : ''
+  }
+}
+
+function toCursorEnd() {
+  const ele = inputRef.value
+  const selection = window.getSelection ? window.getSelection() : null
+  if (selection && ele) {
+    ele.focus()
+    selection.selectAllChildren(ele)
+    selection.collapseToEnd()
+  }
+}
+
+watchEffect(() => {
+  if (focused.value) {
+    // fix: setTimeout修复无法将光标设置在末尾
+    setTimeout(() => {
+      toCursorEnd()
+    }, 10)
+  }
+})
 
 watch(
   () => props.focused,
   (focus) => {
     focused.value = focus
+    syncContent()
   }
 )
+
+// TODO: 尝试使用点击label方式， 实际焦点到input来实现拉起键盘
+defineExpose({
+  focus() {
+    focused.value = false
+    setTimeout(() => {
+      focused.value = true
+      inputRef.value?.focus()
+    }, 10)
+  }
+})
 </script>
 
 <style lang="less">
