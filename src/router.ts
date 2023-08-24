@@ -16,6 +16,10 @@ export const router = createRouter({
       component: () => import(/* webpackChunkName: "test" */ './views/Home/test-page.vue')
     },
     {
+      path: '/verify-page',
+      component: () => import(/* webpackChunkName: "test" */ './views/Home/verify-page.vue')
+    },
+    {
       path: '/:patchMatch(.*)*',
       name: 'NotFound',
       component: import(/* webpackChunkName: "home" */ './views/ErrorPages/NotFound.vue')

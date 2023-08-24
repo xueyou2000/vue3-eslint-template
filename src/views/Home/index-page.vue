@@ -14,6 +14,10 @@ function toTest() {
   router.push('/test')
 }
 
+function toVerifyPage() {
+  router.push('/verify-page')
+}
+
 async function getData() {
   try {
     const response = await fetch('/api/auth/users/33?token=123', {
@@ -39,6 +43,8 @@ async function getData() {
       <ShadowButton @click="toTest">Get a Demo</ShadowButton>
       <br />
       <ShadowButton @click="getData">获取mock数据</ShadowButton>
+      <br />
+      <ShadowButton @click="toVerifyPage">跳转verify-page</ShadowButton>
     </div>
 
     <!-- <p v-if="waited != null">I waited for {{ waited }}</p> -->
