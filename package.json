@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build-analyzer": "ANALYZER=1 vite build",
+    "build-analyzer": "cross-env ANALYZER=1 vite build",
     "ts-check-build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
@@ -27,6 +27,7 @@
     "@vitejs/plugin-vue": "^4.3.1",
     "@vue/eslint-config-typescript": "^11.0.3",
     "body-parser": "^1.20.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard-with-typescript": "^37.0.0",

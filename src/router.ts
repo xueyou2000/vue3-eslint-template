@@ -17,7 +17,7 @@ export const router = createRouter({
     },
     {
       path: '/verify-page',
-      component: () => import(/* webpackChunkName: "test" */ './views/Home/verify-page.vue')
+      component: () => import(/* webpackChunkName: "verify" */ './views/Home/verify-page.vue')
     },
     {
       path: '/:patchMatch(.*)*',

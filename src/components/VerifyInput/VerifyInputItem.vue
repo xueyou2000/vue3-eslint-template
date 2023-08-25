@@ -34,12 +34,13 @@ function getContext(str: ValueWitchEmpty) {
 const inputRef = ref<HTMLDivElement>()
 const { focused } = useFocus(inputRef)
 
-function onInput(event: any) {
-  const content = (event.target?.innerText || '').trim()
+function onInput(event: Event) {
+  const target = event.target as HTMLDivElement
+  const content = (target?.innerText || '').trim()
   if (content) {
     const lastChar = content.slice(-1)
     emits('update:modelValue', lastChar)
-    event.target.innerText = getContext(lastChar)
+    target.innerText = getContext(lastChar)
   } else {
     emits('clear')
   }

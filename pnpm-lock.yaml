@@ -12,6 +12,7 @@ specifiers:
   '@vue/eslint-config-typescript': ^11.0.3
   '@vueuse/core': ^10.3.0
   body-parser: ^1.20.2
+  cross-env: ^7.0.3
   eslint: ^8.47.0
   eslint-config-prettier: ^9.0.0
   eslint-config-standard-with-typescript: ^37.0.0
@@ -57,6 +58,7 @@ devDependencies:
   '@vitejs/plugin-vue': 4.3.1_vite@4.4.9+vue@3.3.4
   '@vue/eslint-config-typescript': 11.0.3_sgnyms5f3pb4r2j66wcxpuyjjy
   body-parser: 1.20.2
+  cross-env: 7.0.3
   eslint: 8.47.0
   eslint-config-prettier: 9.0.0_eslint@8.47.0
   eslint-config-standard-with-typescript: 37.0.0_wxqsjxo2i6dl2yzuer5sbkoqba
@@ -2341,8 +2343,16 @@ packages:
     requiresBuild: true
     dev: true
 
+  /cross-env/7.0.3:
+    resolution: {integrity: sha1-hlJkspZ33AFbqEGJGJZd0jL8VM8=, tarball: cross-env/download/cross-env-7.0.3.tgz}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
+
   /cross-spawn/7.0.3:
-    resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+    resolution: {integrity: sha1-9zqFudXUHQRVUcF34ogtSshXKKY=, tarball: cross-spawn/download/cross-spawn-7.0.3.tgz}
     engines: {node: '>= 8'}
     dependencies:
       path-key: 3.1.1
@@ -3455,7 +3465,7 @@ packages:
     dev: true
 
   /isexe/2.0.0:
-    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+    resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=, tarball: isexe/download/isexe-2.0.0.tgz}
     dev: true
 
   /js-tokens/4.0.0:
@@ -3877,12 +3887,12 @@ packages:
     dev: true
 
   /path-key/3.1.1:
-    resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
+    resolution: {integrity: sha1-WB9q3mWMu6ZaDTOA3ndTKVBU83U=, tarball: path-key/download/path-key-3.1.1.tgz}
     engines: {node: '>=8'}
     dev: true
 
   /path-key/4.0.0:
-    resolution: {integrity: sha512-haREypq7xkM7ErfgIyA0z+Bj4AGKlMSdlQE2jvJo6huWD1EdkKYV+G/T4nq0YEF2vgTT8kqMFKo1uHn950r4SQ==}
+    resolution: {integrity: sha1-KVWI3DruZBVPh3rbnXgLgcVUvxg=, tarball: path-key/download/path-key-4.0.0.tgz}
     engines: {node: '>=12'}
     dev: true
 
@@ -4210,14 +4220,14 @@ packages:
     dev: true
 
   /shebang-command/2.0.0:
-    resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
+    resolution: {integrity: sha1-zNCvT4g1+9wmW4JGGq8MNmY/NOo=, tarball: shebang-command/download/shebang-command-2.0.0.tgz}
     engines: {node: '>=8'}
     dependencies:
       shebang-regex: 3.0.0
     dev: true
 
   /shebang-regex/3.0.0:
-    resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
+    resolution: {integrity: sha1-rhbxZE2HPsrYQ7AwexQzYtTEIXI=, tarball: shebang-regex/download/shebang-regex-3.0.0.tgz}
     engines: {node: '>=8'}
     dev: true
 
@@ -4646,6 +4656,9 @@ packages:
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1
       vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
     dependencies:
       vue: 3.3.4
     dev: false
@@ -4727,7 +4740,7 @@ packages:
     dev: true
 
   /which/2.0.2:
-    resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
+    resolution: {integrity: sha1-fGqN0KY2oDJ+ELWckobu6T8/UbE=, tarball: which/download/which-2.0.2.tgz}
     engines: {node: '>= 8'}
     hasBin: true
     dependencies:
