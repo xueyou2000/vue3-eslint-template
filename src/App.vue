@@ -30,7 +30,7 @@ import PageLoading from '@/components/loading/PageLoading.vue'
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.25s ease;
 }
 
 .fade-enter-from,

@@ -14,7 +14,6 @@
       </template>
     </ul>
     {{ charList }}
-    <button @click="focusedIndex = 1">test</button>
   </div>
 </template>
 
@@ -55,20 +54,6 @@ function onItemValueChange(value: ValueWitchEmpty, index: number) {
 function onItemValueClear(index: number, focusChange?: boolean) {
   // 当前index后的内容都往前移
   charList.value = paddingCharList(charList.value, index)
-  // todo: 在下一次渲染后， selecttion 光标位置放在末尾
-  nextTick(() => {
-    setTimeout(() => {
-      const selection = window.getSelection()
-      if (selection) {
-        selection.deleteFromDocument()
-        console.log(selection)
-        if (selection.focusNode) {
-          selection.selectAllChildren(selection.focusNode)
-        }
-        selection.collapseToEnd()
-      }
-    }, 2000)
-  })
 
   // 后续还有内容则不重建焦点索引
   const maxLength = charList.value.length

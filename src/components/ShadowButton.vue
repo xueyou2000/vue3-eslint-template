@@ -43,7 +43,7 @@ defineEmits<{
     height: 100%;
     position: absolute;
     width: 100%;
-    z-index: -2;
+    // z-index: -2;
     left: 0;
 
     &.gradient {
@@ -156,6 +156,8 @@ defineEmits<{
     transition-property: color, background-color, box-shadow;
     transition-duration: 0.15s;
     transition-timing-function: ease;
+    position: relative;
+    z-index: 1;
   }
 
   .button_content {
