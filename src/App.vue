@@ -7,7 +7,7 @@ import PageLoading from '@/components/loading/PageLoading.vue'
     <template v-if="Component">
       <Transition name="fade" mode="out-in">
         <KeepAlive>
-          <Suspense :timeout="400">
+          <Suspense :timeout="200">
             <!-- 主要内容 -->
             <component :is="Component"></component>
 
@@ -26,7 +26,6 @@ import PageLoading from '@/components/loading/PageLoading.vue'
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
 }
 .fade-enter-active,
 .fade-leave-active {

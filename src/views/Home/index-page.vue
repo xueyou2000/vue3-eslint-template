@@ -1,24 +1,11 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
 import ShadowButton from '@/components/ShadowButton.vue'
-// defineProps<{ waited: boolean }>()
+import { ThemeToggle } from '@/components/ThemeToggle'
+import { ref } from 'vue'
+defineProps<{ query: boolean }>()
 
-const router = useRouter()
-
-onMounted(() => {
-  console.log(useRoute())
-})
-
-function toTest() {
-  router.push('/test')
-}
-
-function toVerifyPage() {
-  router.push('/verify-page')
-}
-
-async function getData() {
+const data = ref()
+async function fetchData() {
   try {
     const response = await fetch('/api/auth/users/33?token=123', {
       method: 'POST',
@@ -27,9 +14,8 @@ async function getData() {
       },
       body: JSON.stringify({ name: 'hello' })
     })
-    console.log('>>> response.json()', response)
-    const data = await response.json()
-    console.log('>>> res data', data)
+    data.value = await response.json()
+    console.log('>>> res data', data.value)
   } catch (error) {
     console.log('>>> error', error)
   }
@@ -37,21 +23,38 @@ async function getData() {
 </script>
 
 <template>
-  <div>
-    <h1>Home page</h1>
+  <div class="home-page">
+    <ThemeToggle />
+    <nav class="nav">
+      <ul>
+        <li><a href="/test">异步加载页</a></li>
+        <li><a href="/verify-page">验证码输入框组件</a></li>
+      </ul>
+    </nav>
     <div class="btn-wrap">
-      <ShadowButton @click="toTest">Get a Demo</ShadowButton>
-      <br />
-      <ShadowButton @click="getData">获取mock数据</ShadowButton>
-      <br />
-      <ShadowButton @click="toVerifyPage">跳转verify-page</ShadowButton>
+      <ShadowButton @click="fetchData">获取mock数据</ShadowButton>
     </div>
+    <code :style="{ whiteSpace: 'pre' }">
+      {{ JSON.stringify(data, null, 4) }}
+    </code>
 
-    <!-- <p v-if="waited != null">I waited for {{ waited }}</p> -->
+    <p v-if="query != null">propr for router {{ query }}</p>
   </div>
 </template>
 
 <style scoped lang="less">
+.home-page {
+  padding: 20px;
+}
+.nav {
+  ul {
+    list-style: circle inside;
+  }
+  li {
+    padding: 5px 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
 .btn-wrap {
   margin: 20px auto;
   max-width: 150px;

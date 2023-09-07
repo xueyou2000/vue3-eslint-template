@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, Ref, onMounted } from 'vue'
+import { ref, Ref, onMounted } from 'vue'
 import VerifyInputItem from './VerifyInputItem.vue'
 import { ValueWitchEmpty, VerifyInputEvents, VerifyInputProps } from './types'
 import {

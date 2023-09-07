@@ -1,0 +1,38 @@
+.light-theme {
+  --band-color: #06ad56;
+  --accent-primary: #0085f2;
+  --background-primary: #fff;
+  --text-primary: #1b1b1b;
+  --scrollbar-bg: transparent;
+  --scrollbar-color: rgba(0, 0, 0, 0.25);
+  --tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme {
+  --band-color: #06ad56;
+  --accent-primary: #5e9eff;
+  --background-primary: #1b1b1b;
+  --text-primary: #fff;
+  --scrollbar-bg: transparent;
+  --scrollbar-color: rgba(255, 255, 255, 0.25);
+  --tap-highlight-color: rgba(255, 255, 255, 0.1);
+}
+
+.light {
+  .light-theme();
+}
+
+.dark {
+  .dark-theme();
+}
+
+// OS Default.
+:root:not(.light):not(.dark) {
+  @media (prefers-color-scheme: light) {
+    .light-theme();
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .dark-theme();
+  }
+}

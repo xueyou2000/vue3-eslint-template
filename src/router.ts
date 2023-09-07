@@ -9,7 +9,7 @@ export const router = createRouter({
     {
       path: '/',
       component: () => import(/* webpackChunkName: "home" */ './views/Home/index-page.vue'),
-      props: { default: (to: any) => ({ waited: to.meta.waitedFor }) }
+      props: (route) => ({ query: route.query.q })
     },
     {
       path: '/test',

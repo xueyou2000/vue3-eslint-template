@@ -1,4 +1,5 @@
 @import './base.less';
+@import './themes.less';
 
 * {
   -webkit-touch-callout: none;
@@ -21,6 +22,17 @@ body {
   height: 100%;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  accent-color: var(--accent-primary);
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  scrollbar-color: var(--scrollbar-color) var(--scrollbar-bg);
 }
 
 #app {
