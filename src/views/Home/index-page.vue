@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import ShadowButton from '@/components/ShadowButton.vue'
 import { ThemeToggle } from '@/components/ThemeToggle'
+import ListRender from './list-render.vue'
 import { ref } from 'vue'
 defineProps<{ query: boolean }>()
+
+const menus = ref([
+  { name: '异步加载页', href: '/test' },
+  { name: '验证码输入框组件', href: '/verify-page' }
+])
 
 const data = ref()
 async function fetchData() {
@@ -26,10 +32,11 @@ async function fetchData() {
   <div class="home-page">
     <ThemeToggle />
     <nav class="nav">
-      <ul>
-        <li><a href="/test">异步加载页</a></li>
-        <li><a href="/verify-page">验证码输入框组件</a></li>
-      </ul>
+      <ListRender :list="menus">
+        <template #default="{ row }">
+          <a :href="row.href">{{ row.name }}</a>
+        </template>
+      </ListRender>
     </nav>
     <div class="btn-wrap">
       <ShadowButton @click="fetchData">获取mock数据</ShadowButton>
@@ -42,7 +49,7 @@ async function fetchData() {
   </div>
 </template>
 
-<style scoped lang="less">
+<style lang="less">
 .home-page {
   padding: 20px;
 }
